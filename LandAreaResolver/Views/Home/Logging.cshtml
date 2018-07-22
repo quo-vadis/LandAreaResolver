@@ -1,0 +1,41 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "Logging";
+}
+
+<h2>Logging</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            @using (Html.BeginForm())
+            {
+                <div class="form-group mb-2 ">
+                    @Html.Label("searchQuery", "Search by: ")
+                    @Html.TextBox("searchQuery", "")
+                    <input class="btn btn-primary" type="submit" value="Search" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h3>Log information</h3>
+            @if (Model != null && Model.Count() > 0)
+            {
+            <ul class="list-group" id="logList">
+                @foreach (var item in Model)
+                {
+                <li class="list-group-item list-group-item-info">@item</li>
+                }
+            </ul>
+            }
+            else
+            {
+                <span>no mathes found</span>
+            }
+        </div>
+    </div>
+</div>
+
